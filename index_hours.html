@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khyati Bareja - Data Engineer Job Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta name="description" content="Curated Data Engineer roles by interview style and AI policy.">
+  <meta name="robots" content="index,follow">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .skill-tag { transition: all 0.3s ease; }
+    .skill-tag:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .job-card { transition: all 0.3s ease; }
+    .job-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+    .filter-chip { transition: all 0.2s ease; }
+    .filter-chip.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+    .dark .job-card { background: #1f2937; border-color: #374151; }
+    .dark .skill-tag { background: #374151; color: #e5e7eb; }
+    .chart-container { height: 300px !important; }
+    .min-w-64 { min-width: 16rem; }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+  <button id="darkModeToggle" class="fixed top-4 right-4 z-50 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+    <i class="fas fa-moon text-gray-600 dark:text-yellow-400"></i>
+  </button>
+
+  <header class="bg-white dark:bg-gray-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          Khyati Bareja
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6">
+          Data Engineer — Building Scalable Data Pipelines & Analytics Infrastructure
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <a href="https://sites.google.com/view/khyati-bareja-portfolio/resume" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 flex items-center gap-2">
+            <i class="fas fa-file-alt"></i> Resume
+          </a>
+          <a href="https://www.linkedin.com/in/khyatibareja/" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors duration-200 flex items-center gap-2">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/Khyati-Bareja" target="_blank" class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg transition-colors duration-200 flex items-center gap-2">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="mailto:khyati.bareja@gmail.com" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 flex items-center gap-2">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="skill-tag bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium">Python</span>
+          <span class="skill-tag bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-4 py-2 rounded-full text-sm font-medium">SQL</span>
+          <span class="skill-tag bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-4 py-2 rounded-full text-sm font-medium">Spark</span>
+          <span class="skill-tag bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-4 py-2 rounded-full text-sm font-medium">Airflow</span>
+          <span class="skill-tag bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-4 py-2 rounded-full text-sm font-medium">Kafka</span>
+          <span class="skill-tag bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-4 py-2 rounded-full text-sm font-medium">Azure/GCP</span>
+          <span class="skill-tag bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 px-4 py-2 rounded-full text-sm font-medium">Snowflake</span>
+          <span class="skill-tag bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 px-4 py-2 rounded-full text-sm font-medium">dbt</span>
+          <span class="skill-tag bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-4 py-2 rounded-full text-sm font-medium">Prompt Engineering</span>
+          <span class="skill-tag bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 px-4 py-2 rounded-full text-sm font-medium">LLM Basics</span>
+        </div>
+      </div>
+
+      <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Experience & Impact</h3>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                <span>3+ years experience in data engineering with expertise in Python, SQL, Spark, and Airflow</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-chart-line text-blue-500 mt-1"></i>
+                <span>Built scalable data pipelines processing 10M+ records daily, reducing processing time by 40%</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-cogs text-purple-500 mt-1"></i>
+                <span>Designed ETL workflows using Kafka and dbt, improving data quality by 35%</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Technical Expertise</h3>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-cloud text-blue-500 mt-1"></i>
+                <span>Experience with cloud platforms (Azure/GCP), Snowflake, and modern data stack</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-project-diagram text-green-500 mt-1"></i>
+                <span>Portfolio projects: Real-time streaming with Kafka, dbt transformation models, ML pipelines</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+      <div class="flex flex-wrap gap-4 mb-6">
+        <div class="flex-1 min-w-64">
+          <input type="text" id="searchInput" placeholder="Search jobs, companies, or technologies..." class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white">
+        </div>
+        <select id="sortSelect" class="px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
+          <option value="freshness">Sort by Freshness</option>
+          <option value="salary">Sort by Salary</option>
+          <option value="relevance">Sort by Relevance</option>
+        </select>
+        <button id="exportJSON" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-colors duration-200">
+          <i class="fas fa-download mr-2"></i>Export JSON
+        </button>
+        <button id="exportCSV" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors duration-200">
+          <i class="fas fa-file-csv mr-2"></i>Export CSV
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Country</h3>
+          <div class="flex flex-wrap gap-2" id="countryFilters">
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="country" data-value="all">All Countries</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="country" data-value="India">India</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="country" data-value="USA">USA</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="country" data-value="Europe">Europe</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="country" data-value="UK">UK</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="country" data-value="Canada">Canada</button>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Work Mode</h3>
+          <div class="flex flex-wrap gap-2" id="workModeFilters">
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="work_mode" data-value="all">All Modes</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="work_mode" data-value="remote">Remote</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="work_mode" data-value="hybrid">Hybrid</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="work_mode" data-value="onsite">Onsite</button>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Visa Sponsorship</h3>
+          <div class="flex flex-wrap gap-2" id="visaFilters">
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="visa_sponsorship" data-value="all">All Visa</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="visa_sponsorship" data-value="explicit_yes">Sponsors Visa</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="visa_sponsorship" data-value="explicit_no">No Sponsorship</button>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Experience Level</h3>
+          <div class="flex flex-wrap gap-2" id="experienceFilters">
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="experience_level" data-value="all">All Levels</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="experience_level" data-value="junior">Junior</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="experience_level" data-value="mid">Mid-Level</button>
+            <button class="filter-chip px-3 py-1 rounded-full text-sm bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500" data-filter="experience_level" data-value="senior">Senior</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-2xl font-bold text-gray-900 dark:text-white" id="totalJobs">0</p>
+            <p class="text-gray-600 dark:text-gray-400">Total Roles</p>
+          </div>
+          <i class="fas fa-briefcase text-3xl text-blue-500"></i>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-2xl font-bold text-gray-900 dark:text-white" id="remoteJobs">0</p>
+            <p class="text-gray-600 dark:text-gray-400">Remote Jobs</p>
+          </div>
+          <i class="fas fa-home text-3xl text-green-500"></i>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-2xl font-bold text-gray-900 dark:text-white" id="visaJobs">0</p>
+            <p class="text-gray-600 dark:text-gray-400">Visa Sponsored</p>
+          </div>
+          <i class="fas fa-globe text-3xl text-purple-500"></i>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-2xl font-bold text-gray-900 dark:text-white" id="nonWhiteboardJobs">0</p>
+            <p class="text-gray-600 dark:text-gray-400">Non-Whiteboard</p>
+          </div>
+          <i class="fas fa-laptop-code text-3xl text-orange-500"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-8">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <i class="fas fa-laptop-code text-green-500"></i>
+          Non-Whiteboard Interviews
+          <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-lg font-normal" id="nonWhiteboardCount">0</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Take-home projects, practical tasks, code reviews, and real-world problem solving</p>
+        <div class="grid gap-6" id="nonWhiteboardJobs"></div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <i class="fas fa-chalkboard-teacher text-red-500"></i>
+          Whiteboard-Style Interviews
+          <span class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-3 py-1 rounded-full text-lg font-normal" id="whiteboardCount">0</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Algorithmic coding, DS&A challenges, LeetCode-style problems</p>
+        <div class="grid gap-6" id="whiteboardJobs"></div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <i class="fas fa-robot text-purple-500"></i>
+          AI-Friendly Roles
+          <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-lg font-normal" id="aiCount">0</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Roles that explicitly allow/encourage AI tools like GitHub Copilot, Cursor, or similar</p>
+        <div class="grid gap-6" id="aiJobs"></div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <i class="fas fa-question-circle text-blue-500"></i>
+          Interview Style Unclear
+          <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-lg font-normal" id="unclearCount">0</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Roles where interview format is not specified - verify during application process</p>
+        <div class="grid gap-6" id="unclearJobs"></div>
+      </section>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mt-12">
+      <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Jobs by Country</h3>
+        <div class="chart-container"><canvas id="countryChart"></canvas></div>
+      </div>
+      <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Interview Styles</h3>
+        <div class="chart-container"><canvas id="interviewChart"></canvas></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="mb-4">Last updated: September 7, 2025</p>
+      <p class="text-gray-400 mb-4"><strong>Disclaimer:</strong> Job information is aggregated from various sources. Please verify interview policies, visa sponsorship, and AI tool usage during recruiter screens.</p>
+      <p class="text-gray-400">Contact: <a href="mailto:khyati.bareja@gmail.com" class="text-blue-400 hover:text-blue-300">khyati.bareja@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Badge class helpers
+    const WORKMODE_CLASSES = {
+      remote: "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200",
+      hybrid: "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200",
+      onsite: "bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200",
+      default: "bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+    };
+    const EXP_CLASSES = {
+      junior: "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200",
+      mid: "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200",
+      senior: "bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200",
+      default: "bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+    };
+    function classForWorkMode(mode){ return WORKMODE_CLASSES[mode] || WORKMODE_CLASSES.default; }
+    function classForExp(level){ return EXP_CLASSES[level] || EXP_CLASSES.default; }
+
+    // Job Data (fixed JSON)
+    const jobsData = {
+      "jobs": [
+        {
+          "job_id": "possible_finance_de_001",
+          "title": "Data Engineer",
+          "company": "Possible Finance",
+          "source": "greenhouse",
+          "apply_url": "https://job-boards.greenhouse.io/possiblefinancialinc/jobs/4800475007",
+          "location_city": "Seattle",
+          "location_country": "USA",
+          "work_mode": "hybrid",
+          "salary_range": "$142,000 - $150,000",
+          "employment_type": "full-time",
+          "posted_date_iso": "2025-09-05",
+          "posted_date_iso": "2025-09-05T08:00:00Z",
+          "visa_sponsorship": "unclear",
+          "interview_style": "non_whiteboard",
+          "ai_tools_allowed": "unclear",
+          "tech_stack": ["Python","SQL","Spark","AWS","Databricks","dbt","Airflow","Terraform"],
+          "hard_requirements": ["3+ years data engineering","Python","SQL","Spark","Cloud platforms","dbt"],
+          "nice_to_have": ["Kafka","MLOps","DataDog","Grafana"],
+          "experience_level": "mid",
+          "notes": "Emphasizes building scalable pipelines and ETL processes. Take-home oriented based on practical data engineering tasks.",
+          "duplicate_of": null
+        },
+        {
+          "job_id": "samsara_sde_002",
+          "title": "Senior Data Engineer",
+          "company": "Samsara",
+          "source": "greenhouse",
+          "apply_url": "https://boards.greenhouse.io/samsara/jobs/7075234",
+          "location_city": "Remote",
+          "location_country": "USA",
+          "work_mode": "remote",
+          "salary_range": "$112,455 - $170,100",
+          "employment_type": "full-time",
+          "posted_date_iso": "2025-09-04",
+          "posted_date_iso": "2025-09-04T09:00:00Z",
+          "visa_sponsorship": "unclear",
+          "interview_style": "non_whiteboard",
+          "ai_tools_allowed": "unclear",
+          "tech_stack": ["Python","SQL","Databricks","AWS","Fivetran","dbt","PySpark","Terraform"],
+          "hard_requirements": ["6+ years data engineering","Python","SQL","Large scale pipelines","Cloud platforms"],
+          "nice_to_have": ["Spark/PySpark","Terraform","DataDog","AWS Serverless"],
+          "experience_level": "senior",
+          "notes": "Focus on E2E data pipelines and IoT data processing. Practical engineering assessment likely.",
+          "duplicate_of": null
+        },
+        {
+          "job_id": "moonpay_dpe_003",
+          "title": "Data Platform Engineer",
+          "company": "MoonPay",
+          "source": "lever",
+          "apply_url": "https://jobs.lever.co/moonpay/3b6c5aec-a17c-474c-96b6-7326f21088df",
+          "location_city": "Multiple",
+          "location_country": "Europe",
+          "work_mode": "remote",
+          "salary_range": "Competitive",
+          "employment_type": "full-time",
+          "posted_date_iso": "2025-09-06",
+          "posted_date_iso": "2025-09-06T07:00:00Z",
+          "visa_sponsorship": "explicit_yes",
+          "interview_style": "non_whiteboard",
+          "ai_tools_allowed": "unclear",
+          "tech_stack": ["Python","SQL","Kafka","Pub/Sub","Airflow","BigQuery","dbt","Terraform"],
+          "hard_requirements": ["Data pipelines","Python","SQL","Kafka/Pub/Sub","Airflow","BigQuery"],
+          "nice_to_have": ["Terraform","Crypto experience","Fast-paced environment"],
+          "experience_level": "mid",
+          "notes": "Real-time streaming focus with Kafka. Practical data platform tasks in assessment.",
+          "duplicate_of": null
+        }
+      ]
+    };
+
+    let filteredJobs = [...jobsData.jobs];
+    let currentFilters = { country:'all', work_mode:'all', visa_sponsorship:'all', experience_level:'all' };
+
+    document.addEventListener('DOMContentLoaded', function(){
+      initializeFilters();
+      renderJobs();
+      initializeCharts();
+      setupEventListeners();
+      updateStatistics();
+    });
+
+    function initializeFilters(){
+      const filterButtons = document.querySelectorAll('.filter-chip');
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', function(){
+          const type = this.dataset.filter;
+          const val = this.dataset.value;
+          document.querySelectorAll(`[data-filter="${type}"]`).forEach(s => s.classList.remove('active'));
+          this.classList.add('active');
+          currentFilters[type] = val;
+          applyFilters();
+        });
+      });
+      document.querySelector('[data-filter="country"][data-value="all"]').classList.add('active');
+      document.querySelector('[data-filter="work_mode"][data-value="all"]').classList.add('active');
+      document.querySelector('[data-filter="visa_sponsorship"][data-value="all"]').classList.add('active');
+      document.querySelector('[data-filter="experience_level"][data-value="all"]').classList.add('active');
+    }
+
+    function applyFilters(){
+      const searchTerm = (document.getElementById('searchInput').value || '').toLowerCase();
+      filteredJobs = jobsData.jobs.filter(job => {
+        const matchesSearch = !searchTerm ||
+          job.title.toLowerCase().includes(searchTerm) ||
+          job.company.toLowerCase().includes(searchTerm) ||
+          (job.location_city && job.location_city.toLowerCase().includes(searchTerm)) ||
+          job.tech_stack.some(t => t.toLowerCase().includes(searchTerm));
+
+        const matchesCountry = currentFilters.country === 'all' || job.location_country === currentFilters.country;
+        const matchesMode = currentFilters.work_mode === 'all' || job.work_mode === currentFilters.work_mode;
+        const matchesVisa = currentFilters.visa_sponsorship === 'all' || job.visa_sponsorship === currentFilters.visa_sponsorship;
+        const matchesExp = currentFilters.experience_level === 'all' || job.experience_level === currentFilters.experience_level;
+
+        return matchesSearch && matchesCountry && matchesMode && matchesVisa && matchesExp;
+      });
+      renderJobs();
+      updateStatistics();
+    }
+
+    function renderJobs(){
+      const nonWhiteboard = filteredJobs.filter(j => j.interview_style === 'non_whiteboard');
+      const whiteboard = filteredJobs.filter(j => j.interview_style === 'whiteboard');
+      const aiFriendly = filteredJobs.filter(j => j.ai_tools_allowed === 'explicit_yes' || j.ai_tools_allowed === 'team_norm_yes');
+      const unclear = filteredJobs.filter(j => j.interview_style === 'unclear');
+
+      renderJobSection('nonWhiteboardJobs', nonWhiteboard);
+      renderJobSection('whiteboardJobs', whiteboard);
+      renderJobSection('aiJobs', aiFriendly);
+      renderJobSection('unclearJobs', unclear);
+
+      document.getElementById('nonWhiteboardCount').textContent = nonWhiteboard.length;
+      document.getElementById('whiteboardCount').textContent = whiteboard.length;
+      document.getElementById('aiCount').textContent = aiFriendly.length;
+      document.getElementById('unclearCount').textContent = unclear.length;
+    }
+
+    function renderJobSection(id, jobs){
+      const el = document.getElementById(id);
+      if(!el) return;
+      if(jobs.length === 0){
+        el.innerHTML = '<div class="text-center py-8 text-gray-500 dark:text-gray-400">No jobs match current filters</div>';
+        return;
+      }
+      el.innerHTML = jobs.map(job => createJobCard(job)).join('');
+    }
+
+    function createJobCard(job){
+      const visaIcon = job.visa_sponsorship === 'explicit_yes' ?
+        '<i class="fas fa-check-circle text-green-500"></i>' :
+        (job.visa_sponsorship === 'explicit_no' ?
+          '<i class="fas fa-times-circle text-red-500"></i>' :
+          '<i class="fas fa-question-circle text-yellow-500"></i>');
+
+      const wmClass = classForWorkMode(job.work_mode);
+      const expClass = classForExp(job.experience_level);
+
+      return `
+        <div class="job-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">${job.title}</h3>
+              <p class="text-lg text-blue-600 dark:text-blue-400 font-semibold mb-2">${job.company}</p>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="${wmClass} px-2 py-1 rounded text-sm">
+                  <i class="fas fa-map-marker-alt mr-1"></i>${job.location_city}, ${job.location_country}
+                </span>
+                <span class="${wmClass} px-2 py-1 rounded text-sm capitalize">${job.work_mode}</span>
+                <span class="${expClass} px-2 py-1 rounded text-sm capitalize">${job.experience_level}</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-bold text-gray-900 dark:text-white mb-1">${job.salary_range}</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">${getFreshnessHours(job.posted_date_iso)} hours ago</p>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="flex items-center gap-2 mb-2">
+              ${visaIcon}
+              <span class="text-sm text-gray-600 dark:text-gray-400">Visa Sponsorship: ${job.visa_sponsorship.replace('_',' ').replace('explicit','').trim() || 'Unclear'}</span>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Tech Stack:</h4>
+            <div class="flex flex-wrap gap-1">
+              ${job.tech_stack.map(t => `<span class="bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-2 py-1 rounded text-xs">${t}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Key Requirements:</h4>
+            <ul class="text-sm text-gray-600 dark:text-gray-400 list-disc list-inside">
+              ${job.hard_requirements.slice(0,3).map(r => `<li>${r}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic">${job.notes}</p>
+          </div>
+
+          <div class="flex justify-between items-center">
+            <div class="text-sm text-gray-500 dark:text-gray-400">Source: ${job.source}</div>
+            <a href="${job.apply_url}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 flex items-center gap-2">
+              <i class="fas fa-external-link-alt"></i> Apply Now
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateStatistics(){
+      document.getElementById('totalJobs').textContent = filteredJobs.length;
+      document.getElementById('remoteJobs').textContent = filteredJobs.filter(j => j.work_mode === 'remote').length;
+      document.getElementById('visaJobs').textContent = filteredJobs.filter(j => j.visa_sponsorship === 'explicit_yes').length;
+      document.getElementById('nonWhiteboardJobs').textContent = filteredJobs.filter(j => j.interview_style === 'non_whiteboard').length;
+    }
+
+    function initializeCharts(){
+      const countryEl = document.getElementById('countryChart');
+      const interviewEl = document.getElementById('interviewChart');
+      if(countryEl){
+        const countryData = getCountryData();
+        new Chart(countryEl.getContext('2d'), {
+          type: 'doughnut',
+          data: { labels: countryData.labels, datasets: [{ data: countryData.values }] },
+          options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'bottom' } } }
+        });
+      }
+      if(interviewEl){
+        const interviewData = getInterviewData();
+        new Chart(interviewEl.getContext('2d'), {
+          type: 'bar',
+          data: { labels: interviewData.labels, datasets: [{ data: interviewData.values }] },
+          options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true } } }
+        });
+      }
+    }
+
+    function getCountryData(){
+      const cnt = {};
+      jobsData.jobs.forEach(j => { cnt[j.location_country] = (cnt[j.location_country]||0)+1; });
+      return { labels: Object.keys(cnt), values: Object.values(cnt) };
+    }
+
+    function getInterviewData(){
+      const c = { 'Non-Whiteboard':0, 'Whiteboard':0, 'AI-Friendly':0, 'Unclear':0 };
+      jobsData.jobs.forEach(j => {
+        if(j.interview_style === 'non_whiteboard') c['Non-Whiteboard']++;
+        else if(j.interview_style === 'whiteboard') c['Whiteboard']++;
+        else c['Unclear']++;
+        if(j.ai_tools_allowed === 'explicit_yes' || j.ai_tools_allowed === 'team_norm_yes') c['AI-Friendly']++;
+      });
+      return { labels:Object.keys(c), values:Object.values(c) };
+    }
+
+    function setupEventListeners(){
+      const s = document.getElementById('searchInput');
+      if(s) s.addEventListener('input', applyFilters);
+      const sortSel = document.getElementById('sortSelect');
+      if(sortSel) sortSel.addEventListener('change', function(){ sortJobs(this.value); });
+      const btnJ = document.getElementById('exportJSON');
+      if(btnJ) btnJ.addEventListener('click', exportJSON);
+      const btnC = document.getElementById('exportCSV');
+      if(btnC) btnC.addEventListener('click', exportCSV);
+      const dm = document.getElementById('darkModeToggle');
+      if(dm) dm.addEventListener('click', toggleDarkMode);
+    }
+
+    function sortJobs(by){
+      switch(by){
+        case 'freshness':
+          filteredJobs.sort((a,b) => a.freshness_days - b.freshness_days); break;
+        case 'salary':
+          const val = s => { const m = (s||'').match(/[\d,]+/); return m ? parseInt(m[0].replace(/,/g,'')) : 0; };
+          filteredJobs.sort((a,b) => val(b.salary_range) - val(a.salary_range)); break;
+        case 'relevance':
+          const key = ['Python','SQL','Spark','Airflow','Kafka'];
+          filteredJobs.sort((a,b) => b.tech_stack.filter(t => key.includes(t)).length - a.tech_stack.filter(t => key.includes(t)).length);
+          break;
+      }
+      renderJobs();
+    }
+
+    function exportJSON(){
+      const dataStr = JSON.stringify({ jobs: filteredJobs }, null, 2);
+      downloadFile(dataStr, 'khyati_data_engineer_jobs.json', 'application/json');
+    }
+    function exportCSV(){
+      const headers = ['job_id','title','company','location_country','work_mode','salary_range','visa_sponsorship','interview_style','ai_tools_allowed','experience_level','apply_url'];
+      let csv = headers.join(',') + '\n';
+      filteredJobs.forEach(j => {
+        const row = headers.map(h => {
+          let v = j[h] || '';
+          if(Array.isArray(v)) v = v.join(';');
+          return `"${v.toString().replace(/"/g,'""')}"`;
+        });
+        csv += row.join(',') + '\n';
+      });
+      downloadFile(csv, 'khyati_data_engineer_jobs.csv', 'text/csv');
+    }
+    function downloadFile(content, filename, type){
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a); URL.revokeObjectURL(url);
+    }
+
+    function toggleDarkMode(){
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', isDark);
+    }
+    
+    function getFreshnessHours(isoDate){
+      try {
+        const posted = new Date(isoDate);
+        const now = new Date();
+        const diffMs = now - posted;
+        const diffHours = Math.floor(diffMs / (1000*60*60));
+        return diffHours >= 0 ? diffHours : 0;
+      } catch(e){
+        return '?';
+      }
+    }
+
+    if (localStorage.getItem('darkMode') === 'true') { document.documentElement.classList.add('dark'); }
+  </script>
+</body>
+</html>
